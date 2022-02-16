@@ -1,0 +1,96 @@
+# Select another nearby character and write a letter to improve relations.
+# Referencing from events/lifestyle/diplomacy_foreign_events.txt
+# Referencing from common/character_interactions/00_gift.txt
+# NEW VERSION
+
+# Current progress: It IS technically working but I need to build the event chain which is linked to the decision. Right now it starts a random discussion between people.
+
+write_letter = {
+	icon = skill_diplomacy_icon					# C:\Games\STEAM\steamapps\common\Crusader Kings III\game\gui\texticons.gui
+	category = interaction_category_friendly
+	common_interaction = yes
+	interface_priority = 80
+	desc = "Write a letter"
+
+	#cooldown = { days = 172 }	# 6 months or so?
+	
+	ai_targets = {
+		ai_recipients = scripted_relations
+	}
+	ai_targets = {
+		ai_recipients = liege
+	}
+	ai_targets = {
+		ai_recipients = neighboring_rulers
+		ai_recipients = peer_vassals
+		max = 10
+	}
+	ai_targets = {
+		ai_recipients = vassals
+		max = 10
+	}
+	ai_target_quick_trigger = {
+		adult = yes
+	}
+	ai_frequency = 80                       #Is this high or low?
+
+	is_shown = {							# We need to also check for a common language
+		# check if diplomacy is > 10
+		NOT = {
+			scope:recipient = scope:actor   #Cant send to yourself
+		}
+
+		NOT = {
+			scope:actor.diplomacy < 8	  	# Must be at or above a skill of 8 (or ten?)
+		}
+
+		NOT = {
+			scope:actor.learning < 5  		# Must be able to read
+		}
+
+		#opinion = {
+		#	target = root
+		#	value >= -20
+		#}
+
+	}
+
+	#immediate = {							# I think we have to define who is who...
+	#
+	#}
+
+	on_accept = {
+		scope:recipient = {			# This probably shouldnt happen yet
+			add_opinion = {
+				target = root
+				modifier = friendliness_opinion
+				opinion = 5			# was 15
+			}
+			hidden_effect = {
+				reverse_add_opinion = {
+					target = root
+					modifier = friendliness_opinion
+					opinion = 5		# Was 15
+				}
+			}
+			trigger_event = diplomacy_foreign.3001
+		}
+		custom_tooltip = "You can send them a letter tooltip" # Was diplomacy_foreign.3001.a.tt
+		scope:actor = {
+			send_interface_message = {
+				type = event_generic_neutral
+				title = "Letter has been sent"
+				right_icon = scope:recipient
+				left_icon = scope.actor
+				stress_impact = {
+					shy = medium_stress_impact_gain
+					dull = medium_stress_impact_loss
+					# Could add a stress loss if with a friend?
+				}
+
+				# We need a warning and a check for those who have already been corrisponded with.
+				# See gift_opinion modifier
+			}
+		}
+	}
+}

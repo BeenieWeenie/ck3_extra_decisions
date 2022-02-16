@@ -1,0 +1,72 @@
+﻿base_modifier = {
+}
+
+# Skill modifiers, applied to each character
+# *_with_offset versions first subtract the NCharacter.SKILL_MODIFIER_OFFSET value from the skill
+
+## See modifier/definitions
+
+diplomacy_modifier = {
+	ai_amenity_target_baseline = 0.015		# Default. How AI like you. 50% higher
+	monthly_prestige = 0.05
+	monthly_diplomacy_lifestyle_xp_gain_mult = 0.0015
+}
+diplomacy_modifier_with_offset = {
+	county_opinion_add = 0.2				# Popular opinion
+	monthly_prestige_gain_mult = 0.015		# Default. 50% higher
+	#vassal_opinion = 0.2					# How your vassals like you
+}
+
+intrigue_modifier = {
+	scheme_discovery_chance_mult = 0.015
+	owned_hostile_scheme_success_chance_add = 1.5
+	monthly_intrigue_lifestyle_xp_gain_mult = 0.0015
+}
+intrigue_modifier_with_offset = {
+	hostile_scheme_resistance_add = 0.1
+}
+
+stewardship_modifier = {
+	monthly_income = 0.05
+	monthly_income_mult = 0.005
+	development_growth_factor = 0.005
+	monthly_stewardship_lifestyle_xp_gain_mult = 0.0015
+}
+stewardship_modifier_with_offset = {
+	domain_tax_mult = 0.020
+	build_gold_cost = -0.01
+	holding_build_gold_cost = -0.01
+	army_maintenance_mult = -0.01
+	development_growth_factor = 0.01
+}
+
+martial_modifier = {
+	monthly_martial_lifestyle_xp_gain_mult = 0.0015
+}
+
+martial_modifier_with_offset = {
+	levy_size = 0.025
+	levy_reinforcement_rate = 0.02
+	army_maintenance_mult = -0.01
+	monthly_county_control_change_factor = 0.01
+}
+
+learning_modifier = {
+	monthly_piety = 0.15
+	monthly_learning_lifestyle_xp_gain_mult = 0.0015
+}
+
+learning_modifier_with_offset = {
+	monthly_lifestyle_xp_gain_mult = 0.001
+}
+
+prowess_modifier = {
+	health = 0.001
+	fertility = 0.01
+	monthly_martial_lifestyle_xp_gain_mult = 0.00025
+}
+
+prowess_with_offset = {
+	hostile_scheme_resistance_add = 0.1
+	dread_baseline_add = 0.1
+}

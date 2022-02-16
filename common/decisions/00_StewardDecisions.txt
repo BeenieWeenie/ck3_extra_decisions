@@ -1,4 +1,4 @@
-﻿visit_market_decision = { 
+﻿visit_market_decision = {
 	picture = "gfx/interface/illustrations/decisions/decision_misc.dds"
 	title = "Visit the Market" #visit_market_decision_t
 	desc = "Take a stroll into your holding and visit the local market" #visit_market_decision_desc
@@ -9,6 +9,7 @@
 	cooldown = { days = 1095 }
 
 	is_shown = {
+		# Look for higher stewardship or greedy or profiligate
 	}
 
 	is_valid_showing_failures_only = {

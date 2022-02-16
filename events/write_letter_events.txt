@@ -1,0 +1,8 @@
+# Select another nearby character and write a letter to improve relations.
+# Referencing from events/lifestyle/diplomacy_foreign_events.txt
+# NEW VERSION
+
+namespace = write_letter
+
+write_letter.001 = {
+}
